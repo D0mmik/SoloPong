@@ -10,7 +10,6 @@ public class Ball : MonoBehaviour
     private GameObject spawnthis;
 
     private float number;
-    public bool canSpawn = true;
 
     private float minX = 8.5f;
     private float maxX = -8.5f;
@@ -35,7 +34,7 @@ public class Ball : MonoBehaviour
         }
 
         Timer -= Time.deltaTime;
-        if (Timer <= 0f && canSpawn == true)
+        if (Timer <= 0f)
         {
           Clone = Instantiate(spawnthis,randomPosition,Quaternion.identity) as GameObject;
           Destroy(Clone,3);

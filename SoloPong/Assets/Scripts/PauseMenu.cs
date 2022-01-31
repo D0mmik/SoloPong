@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = false;
         Menu.SetActive(false);
+        Cursor.visible = false;
 
     }
     void Update()
@@ -21,18 +22,30 @@ public class PauseMenu : MonoBehaviour
             if(isPaused)
             {
                 Resume();
+                             
             }
             else
             {
                 Pause();
+                Cursor.visible = true;  
             }
         }
+
         if(Input.GetKey(KeyCode.R))
         {
           SceneManager.LoadScene("Game");
           Time.timeScale = 1f;
           
         }
+
+        if(isPaused)
+            {
+                Cursor.visible = true;              
+            }
+            else
+            {
+                Cursor.visible = false;
+            }
     }
     public void Resume()
     {
@@ -50,11 +63,11 @@ public class PauseMenu : MonoBehaviour
     }
     public void MenuButton()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
         
     }
-    public void RestartButton()
+    public void ResetButton()
     {
-     
+      PlayerPrefs.SetInt("Highscore", 0);
     }
 }
